@@ -11,6 +11,8 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 
+require('dotenv').config()
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -18,7 +20,7 @@ app.use(express.static(__dirname + "/public"));
 
 //Initialize passport
 app.use(session({
-    secret: "alongsecretonlyiknow_asdlfkhja465xzcew523",
+    secret: process.env.PASSPORT_SECRET,
     resave: false,
     saveUninitialized: false
 }));
